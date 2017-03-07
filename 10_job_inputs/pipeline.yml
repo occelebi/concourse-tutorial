@@ -7,7 +7,7 @@ resources:
 - name: resource-app
   type: git
   source:
-    uri: https://github.com/cloudfoundry-community/simple-go-web-app.git
+    uri: https://github.com/occelebi/deneme.git
 
 jobs:
 - name: job-test-app

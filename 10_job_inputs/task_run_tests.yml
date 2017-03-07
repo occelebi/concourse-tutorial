@@ -8,7 +8,7 @@ image_resource:
 inputs:
 - name: resource-tutorial
 - name: resource-app
-  path: gopath/src/github.com/cloudfoundry-community/simple-go-web-app
+  path: gopath/src/github.com/occelebi/deneme
 
 run:
   path: resource-tutorial/10_job_inputs/task_run_tests.sh
