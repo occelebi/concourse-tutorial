@@ -1,18 +1,23 @@
 ---
+resource_types:
+- name: slack-notification
+  type: docker-image
+  source:
+    repository: cfcommunity/slack-notification-resource
+    tag: latest
 resources:
 - name: slack-alert
   type: slack-notification
   source:
-    url: https://hooks.slack.com/services/....
+    url: {{slack-hook}}
 - name: resource-tutorial
   type: git
   source:
-    uri: https://github.com/starkandwayne/concourse-tutorial.git
+    uri: {{resource-tutorial}}
 - name: resource-app
   type: git
   source:
-    uri: https://github.com/occelebi/deneme.git
-
+    uri: {{resource-app}}
 jobs:
 - name: job-test-app
   public: true
