@@ -1,5 +1,9 @@
 ---
 resources:
+- name: slack-alert
+  type: slack-notification
+  source:
+    url: https://hooks.slack.com/services/....
 - name: resource-tutorial
   type: git
   source:
@@ -18,3 +22,12 @@ jobs:
     trigger: true
   - task: web-app-tests
     file: resource-tutorial/10_job_inputs/task_run_tests.yml
+    on_failure:
+      put: slack-alert
+      params:
+        channel: '#build_status'
+        text: |
+          The build had a result. Check it out at
+          http://ci1.smallpdf-staging.com:8080/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
+          or at
+          http://ci1.smallpdf-staging.com:8080/builds/$BUILD_ID
